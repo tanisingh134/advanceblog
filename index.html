@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 maximum-scale=1.0, user-scalable=no">
+    <title>My Awesome Blog</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Lora:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="reading-progress"></div>
+    <div id="crystals-background"></div>
+    <header>
+        <div class="header-top">
+            <h1>My Awesome Blog</h1>
+            <button class="mobile-menu-toggle" id="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#post1">Post 1</a></li>
+                <li><a href="#post2">Post 2</a></li>
+                <li><a href="#post3">Post 3</a></li>
+                <li><a href="#post4">Post 4</a></li>
+                <li><a href="#post5">Post 5</a></li>
+                <li><a href="#post6">Post 6</a></li>
+                <li><a href="#post7">Post 7</a></li>
+                <li><a href="#post8">Post 8</a></li>
+                <li><a href="#post9">Post 9</a></li>
+                <li><a href="#post10">Post 10</a></li>
+            </ul>
+        </nav>
+        <div class="mobile-nav" id="mobile-nav">
+            <ul>
+                <li><a href="#post1">Post 1</a></li>
+                <li><a href="#post2">Post 2</a></li>
+                <li><a href="#post3">Post 3</a></li>
+                <li><a href="#post4">Post 4</a></li>
+                <li><a href="#post5">Post 5</a></li>
+                <li><a href="#post6">Post 6</a></li>
+                <li><a href="#post7">Post 7</a></li>
+                <li><a href="#post8">Post 8</a></li>
+                <li><a href="#post9">Post 9</a></li>
+                <li><a href="#post10">Post 10</a></li>
+            </ul>
+        </div>
+        <div class="header-controls">
+            <input type="text" id="search-bar" placeholder="Search blog posts...">
+            <button id="dark-mode-toggle">Dark Mode</button>
+        </div>
+    </header>
+
+    <aside class="sidebar">
+        <h2>Categories</h2>
+        <ul class="categories">
+            <li><a href="#" data-category="all">All</a></li>
+            <li><a href="#" data-category="technology">Technology</a></li>
+            <li><a href="#" data-category="lifestyle">Lifestyle</a></li>
+            <li><a href="#" data-category="travel">Travel</a></li>
+            <li><a href="#" data-category="health">Health</a></li>
+            <li><a href="#" data-category="writing">Writing</a></li>
+        </ul>
+    </aside>
+
+    <main>
+        <article id="post1" data-category="writing">
+            <div class="post-header">
+                <h2>Post Title One: The Beginning</h2>
+                <span class="category-tag">Writing</span>
+                <span class="read-time">5 min read</span>
+                <span class="likes" data-post-id="post1">Likes: 0</span>
+                <button class="like-btn" data-post-id="post1">Like</button>
+            </div>
+            <p class="post-date">Published on: June 17, 2025</p>
+            <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&q=80&w=2000" alt="Creative blog post image" loading="lazy">
+            <div class="post-content">
+                <p class="excerpt">This is a summary of the first blog post, which serves as an introduction to our blog. We'll outline what topics we plan to cover and our mission to provide valuable content.</p>
+                <p class="ai-summary">This post introduces our blog’s mission to inspire and educate through diverse topics like technology and lifestyle, fostering a community for sharing ideas and knowledge.</p>
+                <div class="full-content">
+                    <p>Welcome to our blog! This post marks our beginning, where we introduce ourselves and our passion for writing. We'll be sharing articles on a wide range of topics, from technology to lifestyle. Our goal is to create a community where ideas are shared and knowledge is gained. We look forward to having you on this journey with us and hope our posts inspire you.</p>
+                </div>
+                <button class="read-more-btn">Read More</button>
+            </div>
+            <div class="social-share">
+                <h3>Share this post</h3>
+                <a href="#" class="share-twitter" data-title="Post Title One: The Beginning" title="Share on Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="share-facebook" data-title="Post Title One: The Beginning" title="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="share-linkedin" data-title="Post Title One: The Beginning" title="Share on LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+            <div class="comments-section">
+                <h3>Comments</h3>
+                <ul id="comments-post1"></ul>
+                <form class="comment-form" data-post-id="post1">
+                    <input type="text" id="name-post1" placeholder="Your Name" required>
+                    <textarea id="message-post1" placeholder="Your Message" required></textarea>
+                    <button type="submit">Submit Comment</button>
+                </form>
+            </div>
+            <div class="related-posts">
+                <h3>Related Posts</h3>
+                <ul>
+                    <li><a href="#post5">The Art of Writing</a>: Tips to enhance your writing skills.</li>
+                    <li><a href="#post10">Future of Blogging</a>: How AI is shaping content creation.</li>
+                </ul>
+            </div>
+        </article>
+
+        <article id="post2" data-category="lifestyle">
+            <div class="post-header">
+                <h2>Post Title Two: Our Journey</h2>
+                <span class="category-tag">Lifestyle</span>
+                <span class="read-time">8 min read</span>
+                <span class="likes" data-post-id="post2">Likes: 0</span>
+                <button class="like-btn" data-post-id="post2">Like</button>
+            </div>
+            <p class="post-date">Published on: June 24, 2025</p>
+            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=80&w=2000" alt="Beach with palm trees" loading="lazy">
+            <div class="post-content">
+                <p class="excerpt">This post reflects on our journey so far, sharing key milestones, challenges, and the lessons we've learned along the way. It’s a personal look behind the scenes.</p>
+                <p class="ai-summary">This post reflects on our blog’s journey, highlighting milestones and lessons learned, inspiring readers to embrace challenges in pursuit of their personal goals.</p>
+                <div class="full-content">
+                    <p>In this post, we take a moment to look back at our journey. We've had our share of ups and downs, but each experience has taught us something valuable. We'll share our key milestones and the lessons we've learned from our challenges. This post is a personal reflection meant to inspire you to pursue your own goals and not be afraid of the journey.</p>
+                </div>
+                <button class="read-more-btn">Read More</button>
+            </div>
+            <div class="social-share">
+                <h3>Share this post</h3>
+                <a href="#" class="share-twitter" data-title="Post Title Two: Our Journey" title="Share on Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="share-facebook" data-title="Post Title Two: Our Journey" title="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="share-linkedin" data-title="Post Title Two: Our Journey" title="Share on LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+            <div class="comments-section">
+                <h3>Comments</h3>
+                <ul id="comments-post2"></ul>
+                <form class="comment-form" data-post-id="post2">
+                    <input type="text" id="name-post2" placeholder="Your Name" required>
+                    <textarea id="message-post2" placeholder="Your Message" required></textarea>
+                    <button type="submit">Submit Comment</button>
+                </form>
+            </div>
+            <div class="related-posts">
+                <h3>Related Posts</h3>
+                <ul>
+                    <li><a href="#post9">Home Decor Ideas</a>: Creative ways to refresh your home.</li>
+                    <li><a href="#post8">Fitness and Wellness</a>: Tips for a balanced lifestyle.</li>
+                </ul>
+            </div>
+        </article>
+
+        <article id="post3" data-category="technology">
+            <div class="post-header">
+                <h2>Post Title Three: New Technology</h2>
+                <span class="category-tag">Technology</span>
+                <span class="read-time">7 min read</span>
+                <span class="likes" data-post-id="post3">Likes: 0</span>
+                <button class="like-btn" data-post-id="post3">Like</button>
+            </div>
+            <p class="post-date">Published on: July 1, 2025</p>
+            <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&q=80&w=2000" alt="Coding and technology" loading="lazy">
+            <div class="post-content">
+                <p class="excerpt">A deep dive into the latest advancements in technology. We discuss recent innovations and how they are shaping our future, from AI to new gadgets.</p>
+                <p class="ai-summary">This post explores cutting-edge technology trends, including AI and gadgets, offering insights into how these innovations will shape our future.</p>
+                <div class="full-content">
+                    <p>Technology is advancing at an incredible pace, and in this post, we'll explore some of the most exciting new developments. We'll cover everything from breakthroughs in artificial intelligence to the latest gadgets and software. Our analysis will help you understand how these innovations are impacting our lives and what to expect in the near future.</p>
+                </div>
+                <button class="read-more-btn">Read More</button>
+            </div>
+            <div class="social-share">
+                <h3>Share this post</h3>
+                <a href="#" class="share-twitter" data-title="Post Title Three: New Technology" title="Share on Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="share-facebook" data-title="Post Title Three: New Technology" title="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="share-linkedin" data-title="Post Title Three: New Technology" title="Share on LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+            <div class="comments-section">
+                <h3>Comments</h3>
+                <ul id="comments-post3"></ul>
+                <form class="comment-form" data-post-id="post3">
+                    <input type="text" id="name-post3" placeholder="Your Name" required>
+                    <textarea id="message-post3" placeholder="Your Message" required></textarea>
+                    <button type="submit">Submit Comment</button>
+                </form>
+            </div>
+            <div class="related-posts">
+                <h3>Related Posts</h3>
+                <ul>
+                    <li><a href="#post7">Web Development Trends</a>: Emerging frameworks and design practices.</li>
+                    <li><a href="#post10">Future of Blogging</a>: AI’s impact on content creation.</li>
+                </ul>
+            </div>
+        </article>
+
+        <article id="post4" data-category="health">
+            <div class="post-header">
+                <h2>Post Title Four: Healthy Eating Tips</h2>
+                <span class="category-tag">Health</span>
+                <span class="read-time">6 min read</span>
+                <span class="likes" data-post-id="post4">Likes: 0</span>
+                <button class="like-btn" data-post-id="post4">Like</button>
+            </div>
+            <p class="post-date">Published on: July 8, 2025</p>
+            <img src="https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&fit=crop&q=80&w=2000" alt="Healthy food on a table" loading="lazy">
+            <div class="post-content">
+                <p class="excerpt">This post is a guide to making simple and healthy meal choices for your daily routine. We provide practical tips and easy-to-follow advice for a better diet.</p>
+                <p class="ai-summary">This post offers practical tips for healthy eating, including meal prep and snacking ideas, to help you maintain a balanced and enjoyable diet.</p>
+                <div class="full-content">
+                    <p>Maintaining a healthy diet doesn't have to be complicated. In this post, we'll share practical and simple tips for eating healthy every day. We’ll discuss meal prepping, smart snacking, and easy recipe ideas that don’t require a lot of time. Our goal is to show you that a healthy lifestyle is achievable and enjoyable.</p>
+                </div>
+                <button class="read-more-btn">Read More</button>
+            </div>
+            <div class="social-share">
+                <h3>Share this post</h3>
+                <a href="#" class="share-twitter" data-title="Post Title Four: Healthy Eating Tips" title="Share on Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="share-facebook" data-title="Post Title Four: Healthy Eating Tips" title="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="share-linkedin" data-title="Post Title Four: Healthy Eating Tips" title="Share on LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+            <div class="comments-section">
+                <h3>Comments</h3>
+                <ul id="comments-post4"></ul>
+                <form class="comment-form" data-post-id="post4">
+                    <input type="text" id="name-post4" placeholder="Your Name" required>
+                    <textarea id="message-post4" placeholder="Your Message" required></textarea>
+                    <button type="submit">Submit Comment</button>
+                </form>
+            </div>
+            <div class="related-posts">
+                <h3>Related Posts</h3>
+                <ul>
+                    <li><a href="#post8">Fitness and Wellness</a>: Simple exercises for a healthier you.</li>
+                    <li><a href="#post2">Our Journey</a>: Lessons from a balanced lifestyle.</li>
+                </ul>
+            </div>
+        </article>
+
+        <article id="post5" data-category="writing">
+            <div class="post-header">
+                <h2>Post Title Five: The Art of Writing</h2>
+                <span class="category-tag">Writing</span>
+                <span class="read-time">9 min read</span>
+                <span class="likes" data-post-id="post5">Likes: 0</span>
+                <button class="like-btn" data-post-id="post5">Like</button>
+            </div>
+            <p class="post-date">Published on: July 15, 2025</p>
+            <img src="https://t4.ftcdn.net/jpg/02/38/19/41/360_F_238194159_9jR26WlzcHqo85f6RPo7XFgtXzGb68D5.jpg" alt="Person writing in a notebook" loading="lazy">
+            <div class="post-content">
+                <p class="excerpt">An exploration of the writing process, from brainstorming ideas to the final draft. This post shares tips and tricks for improving your writing skills.</p>
+                <p class="ai-summary">This post breaks down the writing process, offering practical tips to brainstorm, structure, and refine your work for better storytelling.</p>
+                <div class="full-content">
+                    <p>Whether you're a student, a professional, or an aspiring blogger, good writing skills are essential. In this post, we'll break down the art of writing into manageable steps. We'll cover how to generate compelling ideas, structure your thoughts, and polish your final piece. Our goal is to help you become a more confident and effective writer.</p>
+                </div>
+                <button class="read-more-btn">Read More</button>
+            </div>
+            <div class="social-share">
+                <h3>Share this post</h3>
+                <a href="#" class="share-twitter" data-title="Post Title Five: The Art of Writing" title="Share on Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="share-facebook" data-title="Post Title Five: The Art of Writing" title="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="share-linkedin" data-title="Post Title Five: The Art of Writing" title="Share on LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+            <div class="comments-section">
+                <h3>Comments</h3>
+                <ul id="comments-post5"></ul>
+                <form class="comment-form" data-post-id="post5">
+                    <input type="text" id="name-post5" placeholder="Your Name" required>
+                    <textarea id="message-post5" placeholder="Your Message" required></textarea>
+                    <button type="submit">Submit Comment</button>
+                </form>
+            </div>
+            <div class="related-posts">
+                <h3>Related Posts</h3>
+                <ul>
+                    <li><a href="#post1">The Beginning</a>: Our blog’s mission and vision.</li>
+                    <li><a href="#post10">Future of Blogging</a>: AI-driven content trends.</li>
+                </ul>
+            </div>
+        </article>
+        
+        <article id="post6" data-category="travel">
+            <div class="post-header">
+                <h2>Post Title Six: Travel Destinations</h2>
+                <span class="category-tag">Travel</span>
+                <span class="read-time">10 min read</span>
+                <span class="likes" data-post-id="post6">Likes: 0</span>
+                <button class="like-btn" data-post-id="post6">Like</button>
+            </div>
+            <p class="post-date">Published on: July 22, 2025</p>
+            <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&q=80&w=2000" alt="A scenic travel destination" loading="lazy">
+            <div class="post-content">
+                <p class="excerpt">A guide to some of the most beautiful and inspiring travel destinations. We offer tips on planning your next adventure, whether it's a budget trip or a luxury getaway.</p>
+                <p class="ai-summary">This post showcases stunning travel destinations with practical tips for planning budget-friendly or luxurious adventures.</p>
+                <div class="full-content">
+                    <p>Looking for your next great adventure? In this post, we'll take you on a tour of some of the world's most stunning destinations. We'll provide detailed guides on what to see, what to do, and where to eat. We also offer practical travel tips, from packing light to finding the best deals on flights and accommodation, making your trip planning a breeze.</p>
+                </div>
+                <button class="read-more-btn">Read More</button>
+            </div>
+            <div class="social-share">
+                <h3>Share this post</h3>
+                <a href="#" class="share-twitter" data-title="Post Title Six: Travel Destinations" title="Share on Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="share-facebook" data-title="Post Title Six: Travel Destinations" title="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="share-linkedin" data-title="Post Title Six: Travel Destinations" title="Share on LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+            <div class="comments-section">
+                <h3>Comments</h3>
+                <ul id="comments-post6"></ul>
+                <form class="comment-form" data-post-id="post6">
+                    <input type="text" id="name-post6" placeholder="Your Name" required>
+                    <textarea id="message-post6" placeholder="Your Message" required></textarea>
+                    <button type="submit">Submit Comment</button>
+                </form>
+            </div>
+            <div class="related-posts">
+                <h3>Related Posts</h3>
+                <ul>
+                    <li><a href="#post2">Our Journey</a>: Personal stories from the road.</li>
+                    <li><a href="#post9">Home Decor Ideas</a>: Inspiration for cozy travel vibes.</li>
+                </ul>
+            </div>
+        </article>
+
+        <article id="post7" data-category="technology">
+            <div class="post-header">
+                <h2>Post Title Seven: Web Development Trends</h2>
+                <span class="category-tag">Technology</span>
+                <span class="read-time">12 min read</span>
+                <span class="likes" data-post-id="post7">Likes: 0</span>
+                <button class="like-btn" data-post-id="post7">Like</button>
+            </div>
+            <p class="post-date">Published on: July 29, 2025</p>
+            <img src="https://images.unsplash.com/photo-1484417894907-623942c8ee29?auto=format&fit=crop&q=80&w=2000" alt="Web development code" loading="lazy">
+            <div class="post-content">
+                <p class="excerpt">This post analyzes the most important trends in web development for the upcoming year, from new frameworks to best practices in design.</p>
+                <p class="ai-summary">This post highlights key web development trends, including new frameworks and UI/UX best practices, shaping the future of digital design.</p>
+                <div class="full-content">
+                    <p>The web development world is always changing. In this article, we'll give you a heads-up on the most important trends to watch. We'll discuss new JavaScript frameworks, the rise of serverless architecture, and key principles of modern UI/UX design. This post is a must-read for developers and anyone interested in the future of the web.</p>
+                </div>
+                <button class="read-more-btn">Read More</button>
+            </div>
+            <div class="social-share">
+                <h3>Share this post</h3>
+                <a href="#" class="share-twitter" data-title="Post Title Seven: Web Development Trends" title="Share on Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="share-facebook" data-title="Post Title Seven: Web Development Trends" title="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="share-linkedin" data-title="Post Title Seven: Web Development Trends" title="Share on LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+            <div class="comments-section">
+                <h3>Comments</h3>
+                <ul id="comments-post7"></ul>
+                <form class="comment-form" data-post-id="post7">
+                    <input type="text" id="name-post7" placeholder="Your Name" required>
+                    <textarea id="message-post7" placeholder="Your Message" required></textarea>
+                    <button type="submit">Submit Comment</button>
+                </form>
+            </div>
+            <div class="related-posts">
+                <h3>Related Posts</h3>
+                <ul>
+                    <li><a href="#post3">New Technology</a>: Latest tech innovations.</li>
+                    <li><a href="#post10">Future of Blogging</a>: AI in content creation.</li>
+                </ul>
+            </div>
+        </article>
+
+        <article id="post8" data-category="health">
+            <div class="post-header">
+                <h2>Post Title Eight: Fitness and Wellness</h2>
+                <span class="category-tag">Health</span>
+                <span class="read-time">6 min read</span>
+                <span class="likes" data-post-id="post8">Likes: 0</span>
+                <button class="like-btn" data-post-id="post8">Like</button>
+            </div>
+            <p class="post-date">Published on: August 5, 2025</p>
+            <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&q=80&w=2000" alt="Fitness and wellness" loading="lazy">
+            <div class="post-content">
+                <p class="excerpt">A practical guide to achieving a healthier lifestyle with simple exercises and wellness tips that can be easily incorporated into your daily routine.</p>
+                <p class="ai-summary">This post provides actionable fitness and wellness tips, from home workouts to mindfulness practices, for a balanced and healthy life.</p>
+                <div class="full-content">
+                    <p>This post is a practical guide to fitness and wellness. We believe that a healthy life is a balanced one. We will cover a range of topics, from beginner-friendly workouts you can do at home to mindfulness practices for mental clarity. Our goal is to provide actionable advice that helps you feel your best, both physically and mentally.</p>
+                </div>
+                <button class="read-more-btn">Read More</button>
+            </div>
+            <div class="social-share">
+                <h3>Share this post</h3>
+                <a href="#" class="share-twitter" data-title="Post Title Eight: Fitness and Wellness" title="Share on Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="share-facebook" data-title="Post Title Eight: Fitness and Wellness" title="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="share-linkedin" data-title="Post Title Eight: Fitness and Wellness" title="Share on LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+            <div class="comments-section">
+                <h3>Comments</h3>
+                <ul id="comments-post8"></ul>
+                <form class="comment-form" data-post-id="post8">
+                    <input type="text" id="name-post8" placeholder="Your Name" required>
+                    <textarea id="message-post8" placeholder="Your Message" required></textarea>
+                    <button type="submit">Submit Comment</button>
+                </form>
+            </div>
+            <div class="related-posts">
+                <h3>Related Posts</h3>
+                <ul>
+                    <li><a href="#post4">Healthy Eating Tips</a>: Simple diet tips for health.</li>
+                    <li><a href="#post2">Our Journey</a>: Lessons for a balanced life.</li>
+                </ul>
+            </div>
+        </article>
+
+        <article id="post9" data-category="lifestyle">
+            <div class="post-header">
+                <h2>Post Title Nine: Home Decor Ideas</h2>
+                <span class="category-tag">Lifestyle</span>
+                <span class="read-time">8 min read</span>
+                <span class="likes" data-post-id="post9">Likes: 0</span>
+                <button class="like-btn" data-post-id="post9">Like</button>
+            </div>
+            <p class="post-date">Published on: August 8, 2025</p>
+            <img src="https://miro.medium.com/0*RMi6qOikm7P0_uFI" alt="Stylish home decor" loading="lazy">
+            <div class="post-content">
+                <p class="excerpt">Creative and affordable ideas to refresh your living space. We share easy DIY projects and design tips to help you create a beautiful home on a budget.</p>
+                <p class="ai-summary">This post shares budget-friendly home decor ideas, including DIY projects and design tips, to create a stylish and cozy living space.</p>
+                <div class="full-content">
+                    <p>Transforming your living space doesn't have to be expensive. In this post, we'll share creative and affordable home decor ideas that will make your home feel brand new. From small DIY projects to smart furniture arrangements, we'll show you how to design a beautiful and comfortable home that reflects your personal style without breaking the bank.</p>
+                </div>
+                <button class="read-more-btn">Read More</button>
+            </div>
+            <div class="social-share">
+                <h3>Share this post</h3>
+                <a href="#" class="share-twitter" data-title="Post Title Nine: Home Decor Ideas" title="Share on Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="share-facebook" data-title="Post Title Nine: Home Decor Ideas" title="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="share-linkedin" data-title="Post Title Nine: Home Decor Ideas" title="Share on LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+            <div class="comments-section">
+                <h3>Comments</h3>
+                <ul id="comments-post9"></ul>
+                <form class="comment-form" data-post-id="post9">
+                    <input type="text" id="name-post9" placeholder="Your Name" required>
+                    <textarea id="message-post9" placeholder="Your Message" required></textarea>
+                    <button type="submit">Submit Comment</button>
+                </form>
+            </div>
+            <div class="related-posts">
+                <h3>Related Posts</h3>
+                <ul>
+                    <li><a href="#post2">Our Journey</a>: Personal stories for inspiration.</li>
+                    <li><a href="#post6">Travel Destinations</a>: Inspiration for cozy travel vibes.</li>
+                </ul>
+            </div>
+        </article>
+
+        <article id="post10" data-category="technology">
+            <div class="post-header">
+                <h2>Post Title Ten: Future of Blogging</h2>
+                <span class="category-tag">Technology</span>
+                <span class="read-time">11 min read</span>
+                <span class="likes" data-post-id="post10">Likes: 0</span>
+                <button class="like-btn" data-post-id="post10">Like</button>
+            </div>
+            <p class="post-date">Published on: August 10, 2025</p>
+            <img src="https://www.elegantthemes.com/blog/wp-content/uploads/2014/02/feature-image-future-of-blogging1.jpg" alt="Future of blogging" loading="lazy">
+            <div class="post-content">
+                <p class="excerpt">A speculative look at how blogging will evolve in the coming years. We discuss the impact of AI, new content formats, and the future of engaging with an audience.</p>
+                <p class="ai-summary">This post explores the future of blogging, focusing on AI’s role, new content formats, and innovative ways to engage audiences.</p>
+                <div class="full-content">
+                    <p>In our final post of this series, we take a speculative look at the future of blogging. We'll discuss how technology, particularly artificial intelligence, is changing how we create and consume content. We'll also explore the rise of new platforms and interactive formats. This post is a forward-looking piece that will get you thinking about what comes next in the world of online content.</p>
+                </div>
+                <button class="read-more-btn">Read More</button>
+            </div>
+            <div class="social-share">
+                <h3>Share this post</h3>
+                <a href="#" class="share-twitter" data-title="Post Title Ten: Future of Blogging" title="Share on Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="share-facebook" data-title="Post Title Ten: Future of Blogging" title="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="share-linkedin" data-title="Post Title Ten: Future of Blogging" title="Share on LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+            <div class="comments-section">
+                <h3>Comments</h3>
+                <ul id="comments-post10"></ul>
+                <form class="comment-form" data-post-id="post10">
+                    <input type="text" id="name-post10" placeholder="Your Name" required>
+                    <textarea id="message-post10" placeholder="Your Message" required></textarea>
+                    <button type="submit">Submit Comment</button>
+                </form>
+            </div>
+            <div class="related-posts">
+                <h3>Related Posts</h3>
+                <ul>
+                    <li><a href="#post3">New Technology</a>: Innovations shaping the future.</li>
+                    <li><a href="#post7">Web Development Trends</a>: Modern web design practices.</li>
+                </ul>
+            </div>
+        </article>
+    </main>
+
+    <button id="back-to-top">Back to Top</button>
+    <footer>
+        <p>&copy; 2025 My Awesome Blog</p>
+        <div class="newsletter">
+            <h3>Subscribe to Newsletter</h3>
+            <form id="newsletter-form">
+                <input type="email" id="newsletter-email" placeholder="Your Email" required>
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

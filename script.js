@@ -54,8 +54,33 @@ document.addEventListener('DOMContentLoaded', () => {
     `;
     document.body.appendChild(sidebarToggle);
 
+    // Sidebar close button
+    const sidebarClose = document.getElementById('sidebar-close');
+
     sidebarToggle.addEventListener('click', () => {
-        sidebar.classList.toggle('open');
+        sidebar.classList.add('open');
+    });
+
+    sidebarClose.addEventListener('click', () => {
+        sidebar.classList.remove('open');
+    });
+
+    // Close sidebar when clicking on category links
+    document.querySelectorAll('.sidebar a').forEach(link => {
+        link.addEventListener('click', () => {
+            if (window.innerWidth <= 768) {
+                sidebar.classList.remove('open');
+            }
+        });
+    });
+
+    // Close sidebar when clicking outside
+    document.addEventListener('click', (e) => {
+        if (window.innerWidth <= 768 && 
+            !sidebar.contains(e.target) && 
+            !sidebarToggle.contains(e.target)) {
+            sidebar.classList.remove('open');
+        }
     });
 
     // Show sidebar toggle on mobile
@@ -108,13 +133,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const commentForms = document.querySelectorAll('.comment-form');
     commentForms.forEach(form => {
         const postId = form.getAttribute('data-post-id');
-        const commentsList = document.getElementById(`comments-${postId}`);
+        const commentsList = document.getElementById(comments-${postId});
         
         // Load comments from localStorage
-        const storedComments = JSON.parse(localStorage.getItem(`comments-${postId}`)) || [];
+        const storedComments = JSON.parse(localStorage.getItem(comments-${postId})) || [];
         storedComments.forEach(comment => {
             const newComment = document.createElement('li');
-            newComment.innerHTML = `<strong>${comment.name}</strong>: ${comment.message}`;
+            newComment.innerHTML = <strong>${comment.name}</strong>: ${comment.message};
             commentsList.appendChild(newComment);
         });
 
@@ -126,7 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const message = messageInput.value;
             if (name && message) {
                 const newComment = document.createElement('li');
-                newComment.innerHTML = `<strong>${name}</strong>: ${message}`;
+                newComment.innerHTML = <strong>${name}</strong>: ${message};
                 newComment.style.opacity = '0';
                 commentsList.appendChild(newComment);
                 
@@ -138,7 +163,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 // Save to localStorage
                 const updatedComments = [...storedComments, { name, message }];
-                localStorage.setItem(`comments-${postId}`, JSON.stringify(updatedComments));
+                localStorage.setItem(comments-${postId}, JSON.stringify(updatedComments));
                 
                 nameInput.value = '';
                 messageInput.value = '';
@@ -201,15 +226,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const likeButtons = document.querySelectorAll('.like-btn');
     likeButtons.forEach(button => {
         const postId = button.getAttribute('data-post-id');
-        const likesSpan = document.querySelector(`.likes[data-post-id="${postId}"]`);
+        const likesSpan = document.querySelector(.likes[data-post-id="${postId}"]);
         
-        let likes = parseInt(localStorage.getItem(`likes-${postId}`)) || 0;
-        likesSpan.textContent = `Likes: ${likes}`;
+        let likes = parseInt(localStorage.getItem(likes-${postId})) || 0;
+        likesSpan.textContent = Likes: ${likes};
         
         button.addEventListener('click', () => {
             likes++;
-            likesSpan.textContent = `Likes: ${likes}`;
-            localStorage.setItem(`likes-${postId}`, likes);
+            likesSpan.textContent = Likes: ${likes};
+            localStorage.setItem(likes-${postId}, likes);
             button.classList.add('liked');
             setTimeout(() => button.classList.remove('liked'), 300);
         });
@@ -222,11 +247,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const url = encodeURIComponent(window.location.href + '#' + button.closest('article').id);
         
         if (button.classList.contains('share-twitter')) {
-            button.href = `https://twitter.com/intent/tweet?text=${title}&url=${url}`;
+            button.href = https://twitter.com/intent/tweet?text=${title}&url=${url};
         } else if (button.classList.contains('share-facebook')) {
-            button.href = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+            button.href = https://www.facebook.com/sharer/sharer.php?u=${url};
         } else if (button.classList.contains('share-linkedin')) {
-            button.href = `https://www.linkedin.com/shareArticle?mini=true&url=${url}&title=${title}`;
+            button.href = https://www.linkedin.com/shareArticle?mini=true&url=${url}&title=${title};
         }
         button.target = '_blank';
     });
@@ -237,7 +262,7 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault();
         const email = document.getElementById('newsletter-email').value;
         if (email) {
-            alert(`Thank you for subscribing with ${email}!`);
+            alert(Thank you for subscribing with ${email}!);
             newsletterForm.reset();
         } else {
             alert('Please enter a valid email.');
@@ -266,10 +291,9 @@ document.addEventListener('DOMContentLoaded', () => {
     for (let i = 0; i < crystalCount; i++) {
         const crystal = document.createElement('div');
         crystal.className = 'crystal';
-        crystal.style.left = `${Math.random() * 100}vw`;
-        crystal.style.top = `${Math.random() * 100}vh`;
-        crystal.style.animationDelay = `${Math.random() * 5}s`;
+        crystal.style.left = ${Math.random() * 100}vw;
+        crystal.style.top = ${Math.random() * 100}vh;
+        crystal.style.animationDelay = ${Math.random() * 5}s;
         container.appendChild(crystal);
     }
 });
-

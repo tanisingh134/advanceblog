@@ -62,10 +62,13 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     sidebarClose.addEventListener('click', () => {
-        sidebar.classList.remove('open');
+        // Only close sidebar on mobile devices
+        if (window.innerWidth <= 768) {
+            sidebar.classList.remove('open');
+        }
     });
 
-    // Close sidebar when clicking on category links
+    // Close sidebar when clicking on category links (mobile only)
     document.querySelectorAll('.sidebar a').forEach(link => {
         link.addEventListener('click', () => {
             if (window.innerWidth <= 768) {
@@ -74,7 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Close sidebar when clicking outside
+    // Close sidebar when clicking outside (mobile only)
     document.addEventListener('click', (e) => {
         if (window.innerWidth <= 768 && 
             !sidebar.contains(e.target) && 
@@ -83,12 +86,15 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Show sidebar toggle on mobile
+    // Show sidebar toggle on mobile only
     const checkScreenSize = () => {
         if (window.innerWidth <= 768) {
             sidebarToggle.style.display = 'block';
+            // On mobile, sidebar starts closed
+            sidebar.classList.remove('open');
         } else {
             sidebarToggle.style.display = 'none';
+            // On desktop/laptop, sidebar is always visible and not in 'open' state
             sidebar.classList.remove('open');
         }
     };

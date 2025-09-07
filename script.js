@@ -1,74 +1,60 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const articles = document.querySelectorAll('article');
+    // These variables are provided by the canvas environment.
+    const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+    const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {};
+    const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : '';
 
-    // Mobile menu toggle functionality
+    // Custom modal functions to replace native alerts
+    const modal = document.getElementById('custom-modal');
+    const modalMessage = document.getElementById('modal-message');
+    const closeModalBtn = document.querySelector('.modal .close-btn');
+
+    function showModal(message) {
+        modalMessage.innerHTML = message;
+        modal.style.display = 'block';
+    }
+
+    closeModalBtn.onclick = () => {
+        modal.style.display = 'none';
+    };
+
+    window.onclick = (event) => {
+        if (event.target === modal) {
+            modal.style.display = 'none';
+        }
+    };
+    
+    const articles = document.querySelectorAll('article');
     const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
     const mobileNav = document.getElementById('mobile-nav');
     const sidebar = document.querySelector('.sidebar');
+    const sidebarToggleBtn = document.getElementById('sidebar-toggle-btn');
+    const sidebarCloseBtn = document.getElementById('sidebar-close');
 
+    // Mobile menu toggle functionality
     mobileMenuToggle.addEventListener('click', () => {
         mobileNav.classList.toggle('active');
-        const icon = mobileMenuToggle.querySelector('i');
-        if (mobileNav.classList.contains('active')) {
-            icon.className = 'fas fa-times';
-        } else {
-            icon.className = 'fas fa-bars';
-        }
+        mobileMenuToggle.querySelector('i').className = mobileNav.classList.contains('active') ? 'fas fa-times' : 'fas fa-bars';
     });
-
-    // Close mobile menu when clicking on a link
+    
+    // Close mobile nav when a link is clicked
     document.querySelectorAll('.mobile-nav a').forEach(link => {
         link.addEventListener('click', () => {
             mobileNav.classList.remove('active');
-            const icon = mobileMenuToggle.querySelector('i');
-            icon.className = 'fas fa-bars';
+            mobileMenuToggle.querySelector('i').className = 'fas fa-bars';
         });
     });
 
-    // Close mobile menu when clicking outside
-    document.addEventListener('click', (e) => {
-        if (!mobileNav.contains(e.target) && !mobileMenuToggle.contains(e.target)) {
-            mobileNav.classList.remove('active');
-            const icon = mobileMenuToggle.querySelector('i');
-            icon.className = 'fas fa-bars';
-        }
-    });
-
-    // Sidebar toggle for mobile
-    const sidebarToggle = document.createElement('button');
-    sidebarToggle.innerHTML = '<i class="fas fa-filter"></i>';
-    sidebarToggle.className = 'sidebar-toggle';
-    sidebarToggle.style.cssText = `
-        position: fixed;
-        top: 50%;
-        left: 10px;
-        z-index: 150;
-        background: linear-gradient(to right, #6a11cb, #2575fc);
-        color: white;
-        border: none;
-        padding: 10px;
-        border-radius: 50%;
-        cursor: pointer;
-        display: none;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-    `;
-    document.body.appendChild(sidebarToggle);
-
-    // Sidebar close button
-    const sidebarClose = document.getElementById('sidebar-close');
-
-    sidebarToggle.addEventListener('click', () => {
+    // Sidebar toggle functionality for mobile
+    sidebarToggleBtn.addEventListener('click', () => {
         sidebar.classList.add('open');
     });
 
-    sidebarClose.addEventListener('click', () => {
-        // Only close sidebar on mobile devices
-        if (window.innerWidth <= 768) {
-            sidebar.classList.remove('open');
-        }
+    sidebarCloseBtn.addEventListener('click', () => {
+        sidebar.classList.remove('open');
     });
-
-    // Close sidebar when clicking on category links (mobile only)
+    
+    // Close sidebar on category link click
     document.querySelectorAll('.sidebar a').forEach(link => {
         link.addEventListener('click', () => {
             if (window.innerWidth <= 768) {
@@ -77,39 +63,13 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Close sidebar when clicking outside (mobile only)
-    document.addEventListener('click', (e) => {
-        if (window.innerWidth <= 768 && 
-            !sidebar.contains(e.target) && 
-            !sidebarToggle.contains(e.target)) {
-            sidebar.classList.remove('open');
-        }
-    });
-
-    // Show sidebar toggle on mobile only
-    const checkScreenSize = () => {
-        if (window.innerWidth <= 768) {
-            sidebarToggle.style.display = 'block';
-            // On mobile, sidebar starts closed
-            sidebar.classList.remove('open');
-        } else {
-            sidebarToggle.style.display = 'none';
-            // On desktop/laptop, sidebar is always visible and not in 'open' state
-            sidebar.classList.remove('open');
-        }
-    };
-
-    window.addEventListener('resize', checkScreenSize);
-    checkScreenSize();
-
-    // 1. Navigation smooth scrolling with category reset
+    // 1. Navigation smooth scrolling and category reset
     document.querySelectorAll('nav a, .mobile-nav a').forEach(anchor => {
         anchor.addEventListener('click', (e) => {
             e.preventDefault();
             // Reset category filter to show all posts
-            articles.forEach(article => {
-                article.style.display = 'block';
-            });
+            articles.forEach(article => article.style.display = 'block');
+            
             const targetId = anchor.getAttribute('href').substring(1);
             const targetElement = document.getElementById(targetId);
             if (targetElement) {
@@ -139,13 +99,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const commentForms = document.querySelectorAll('.comment-form');
     commentForms.forEach(form => {
         const postId = form.getAttribute('data-post-id');
-        const commentsList = document.getElementById(comments-${postId});
+        const commentsList = document.getElementById(`comments-post${postId.substring(4)}`);
         
-        // Load comments from localStorage
-        const storedComments = JSON.parse(localStorage.getItem(comments-${postId})) || [];
+        const storedComments = JSON.parse(localStorage.getItem(`comments-post${postId.substring(4)}`)) || [];
         storedComments.forEach(comment => {
             const newComment = document.createElement('li');
-            newComment.innerHTML = <strong>${comment.name}</strong>: ${comment.message};
+            newComment.innerHTML = `<strong>${comment.name}</strong>: ${comment.message}`;
             commentsList.appendChild(newComment);
         });
 
@@ -157,29 +116,27 @@ document.addEventListener('DOMContentLoaded', () => {
             const message = messageInput.value;
             if (name && message) {
                 const newComment = document.createElement('li');
-                newComment.innerHTML = <strong>${name}</strong>: ${message};
+                newComment.innerHTML = `<strong>${name}</strong>: ${message}`;
                 newComment.style.opacity = '0';
                 commentsList.appendChild(newComment);
                 
-                // Animation for new comment
                 setTimeout(() => {
                     newComment.style.transition = 'opacity 0.5s ease';
                     newComment.style.opacity = '1';
                 }, 10);
                 
-                // Save to localStorage
                 const updatedComments = [...storedComments, { name, message }];
-                localStorage.setItem(comments-${postId}, JSON.stringify(updatedComments));
+                localStorage.setItem(`comments-post${postId.substring(4)}`, JSON.stringify(updatedComments));
                 
                 nameInput.value = '';
                 messageInput.value = '';
             } else {
-                alert('Please enter your name and message.');
+                showModal('Please enter your name and message.');
             }
         });
     });
 
-    // 4. "Read More" functionality
+    // 4. "Read More" functionality with smooth transition
     document.querySelectorAll('.read-more-btn').forEach(button => {
         button.addEventListener('click', () => {
             const postContent = button.closest('.post-content');
@@ -211,36 +168,37 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 6. "Back to Top" button and reading progress
     const backToTopBtn = document.getElementById("back-to-top");
+    const progressBar = document.getElementById('reading-progress');
     window.onscroll = function() {
         if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-            backToTopBtn.style.display = "block";
+            backToTopBtn.style.display = "flex";
         } else {
             backToTopBtn.style.display = "none";
         }
-        // Update reading progress bar
-        const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-        const scrolled = (winScroll / height) * 100;
-        document.getElementById('reading-progress').style.width = scrolled + '%';
+        
+        const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const scrollPosition = window.scrollY;
+        const progress = (scrollPosition / totalHeight) * 100;
+        progressBar.style.width = `${progress}%`;
     };
     backToTopBtn.addEventListener("click", () => {
         document.body.scrollTop = 0;
         document.documentElement.scrollTop = 0;
     });
 
-    // 7. Like button functionality
+    // 7. Like button functionality with localStorage
     const likeButtons = document.querySelectorAll('.like-btn');
     likeButtons.forEach(button => {
         const postId = button.getAttribute('data-post-id');
-        const likesSpan = document.querySelector(.likes[data-post-id="${postId}"]);
+        const likesSpan = document.querySelector(`.likes[data-post-id="${postId}"]`);
         
-        let likes = parseInt(localStorage.getItem(likes-${postId})) || 0;
-        likesSpan.textContent = Likes: ${likes};
+        let likes = parseInt(localStorage.getItem(`likes-${postId}`)) || 0;
+        likesSpan.textContent = `Likes: ${likes}`;
         
         button.addEventListener('click', () => {
             likes++;
-            likesSpan.textContent = Likes: ${likes};
-            localStorage.setItem(likes-${postId}, likes);
+            likesSpan.textContent = `Likes: ${likes}`;
+            localStorage.setItem(`likes-${postId}`, likes);
             button.classList.add('liked');
             setTimeout(() => button.classList.remove('liked'), 300);
         });
@@ -253,25 +211,25 @@ document.addEventListener('DOMContentLoaded', () => {
         const url = encodeURIComponent(window.location.href + '#' + button.closest('article').id);
         
         if (button.classList.contains('share-twitter')) {
-            button.href = https://twitter.com/intent/tweet?text=${title}&url=${url};
+            button.href = `https://twitter.com/intent/tweet?text=${title}&url=${url}`;
         } else if (button.classList.contains('share-facebook')) {
-            button.href = https://www.facebook.com/sharer/sharer.php?u=${url};
+            button.href = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
         } else if (button.classList.contains('share-linkedin')) {
-            button.href = https://www.linkedin.com/shareArticle?mini=true&url=${url}&title=${title};
+            button.href = `https://www.linkedin.com/shareArticle?mini=true&url=${url}&title=${title}`;
         }
         button.target = '_blank';
     });
 
-    // 9. Newsletter signup
+    // 9. Newsletter signup (simulated)
     const newsletterForm = document.getElementById('newsletter-form');
     newsletterForm.addEventListener('submit', (e) => {
         e.preventDefault();
         const email = document.getElementById('newsletter-email').value;
         if (email) {
-            alert(Thank you for subscribing with ${email}!);
+            showModal(`<b>Thank you for subscribing!</b><br>You will receive our latest blog updates at: <b>${email}</b>.`);
             newsletterForm.reset();
         } else {
-            alert('Please enter a valid email.');
+            showModal('Please enter a valid email address.');
         }
     });
 
@@ -288,18 +246,95 @@ document.addEventListener('DOMContentLoaded', () => {
                     article.style.display = 'none';
                 }
             });
+            
+            if (window.innerWidth <= 768) {
+                sidebar.classList.remove('open');
+            }
         });
     });
 
-    // 11. Moving crystals background
-    const container = document.getElementById('crystals-background');
-    const crystalCount = 10;
-    for (let i = 0; i < crystalCount; i++) {
-        const crystal = document.createElement('div');
-        crystal.className = 'crystal';
-        crystal.style.left = ${Math.random() * 100}vw;
-        crystal.style.top = ${Math.random() * 100}vh;
-        crystal.style.animationDelay = ${Math.random() * 5}s;
-        container.appendChild(crystal);
+    // 11. Related posts
+    const relatedSections = document.querySelectorAll('.related-posts ul');
+    articles.forEach((article, index) => {
+        const category = article.getAttribute('data-category');
+        const relatedList = relatedSections[index];
+        const related = Array.from(articles).filter((a, i) => i !== index && a.getAttribute('data-category') === category).slice(0, 3);
+        related.forEach(rel => {
+            const title = rel.querySelector('h2').textContent;
+            const li = document.createElement('li');
+            li.innerHTML = `<a href="#${rel.id}">${title}</a>`;
+            relatedList.appendChild(li);
+        });
+    });
+    
+    // 12. 3D Background with Three.js
+    let scene, camera, renderer, particles = [];
+    const particleCount = 100;
+    const canvas = document.getElementById('three-js-canvas');
+    let mouseX = 0, mouseY = 0;
+
+    function initThreeJS() {
+        if (!canvas) {
+            console.error('Canvas element with id "three-js-canvas" not found.');
+            return;
+        }
+        scene = new THREE.Scene();
+        camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        camera.position.z = 5;
+
+        renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+
+        const particleGeometry = new THREE.IcosahedronGeometry(0.1, 0);
+        const particleMaterial = new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.8 });
+
+        for (let i = 0; i < particleCount; i++) {
+            const particle = new THREE.Mesh(particleGeometry, particleMaterial);
+            particle.position.x = (Math.random() - 0.5) * 20;
+            particle.position.y = (Math.random() - 0.5) * 20;
+            particle.position.z = (Math.random() - 0.5) * 20;
+            
+            particle.userData.rotationSpeed = new THREE.Vector3(
+                (Math.random() - 0.5) * 0.005,
+                (Math.random() - 0.5) * 0.005,
+                (Math.random() - 0.5) * 0.005
+            );
+            
+            particles.push(particle);
+            scene.add(particle);
+        }
     }
+
+    function animate() {
+        requestAnimationFrame(animate);
+
+        particles.forEach(p => {
+            p.rotation.x += p.userData.rotationSpeed.x;
+            p.rotation.y += p.userData.rotationSpeed.y;
+            p.rotation.z += p.userData.rotationSpeed.z;
+        });
+
+        camera.position.x += (mouseX - camera.position.x) * 0.05;
+        camera.position.y += (-mouseY - camera.position.y) * 0.05;
+        camera.lookAt(scene.position);
+
+        renderer.render(scene, camera);
+    }
+    
+    window.onload = function() {
+        initThreeJS();
+        animate();
+    }
+
+    window.addEventListener('resize', () => {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+    
+    window.addEventListener('mousemove', (event) => {
+        mouseX = (event.clientX / window.innerWidth) * 2 - 1;
+        mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
+    });
+
 });
